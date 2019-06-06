@@ -1,0 +1,21 @@
+*Forgot password
+*Percentage for the graphs (pie?)
+*label for x and y axes
+*after registration
+*UI - Donor Survey
+*questions - left
+*string
+*no-value
+*correct-wrong -> acceptable-unacceptable
+*notifs are too technical - classic alert -> swal
+*unit is a must
+*clear button
+*placeholders for the result
+*result and remarks must be together
+*blood bag - tabular form
+*blood type in inventory must be collapsible
+*filter of blood bags
+*expired -> released
+*discarded status for bloodbag
+*pop-up alerts -> swal
+*lifespan must be day-hour-minutes-(seconds)

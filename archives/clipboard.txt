@@ -1,0 +1,135 @@
+//donor count per blood type
+
+// type a
+	$fetch_donorcounttypea = mysqli_query($connections, " SELECT bt.stfBloodType, COUNT(c.intClientId) AS 'Donor Count'
+	FROM tblbloodtype bt
+	JOIN tblclient c ON bt.intBloodTypeId = c.intBloodTypeId
+	WHERE c.stfClientType = 'Donor'
+	AND stfBloodType = 'A'
+	AND c.intClientId IN (
+		SELECT d.intClientId
+			FROM tbldonation d
+	) ");
+	$row_countdonortypea = mysqli_fetch_assoc($fetch_donorcounttypea);
+	$countdonortypea = $row_countdonortypea["Donor Count"];
+	// type ab
+	$fetch_donorcounttypeab = mysqli_query($connections, " SELECT bt.stfBloodType, COUNT(c.intClientId) AS 'Donor Count'
+	FROM tblbloodtype bt
+	JOIN tblclient c ON bt.intBloodTypeId = c.intBloodTypeId
+	WHERE c.stfClientType = 'Donor'
+	AND stfBloodType = 'AB'
+	AND c.intClientId IN (
+		SELECT d.intClientId
+			FROM tbldonation d
+	) ");
+	$row_countdonortypeab = mysqli_fetch_assoc($fetch_donorcounttypeab);
+	$countdonortypeab = $row_countdonortypeab["Donor Count"];
+	// type a
+	$fetch_donorcounttypeb = mysqli_query($connections, " SELECT bt.stfBloodType, COUNT(c.intClientId) AS 'Donor Count'
+	FROM tblbloodtype bt
+	JOIN tblclient c ON bt.intBloodTypeId = c.intBloodTypeId
+	WHERE c.stfClientType = 'Donor'
+	AND stfBloodType = 'B'
+	AND c.intClientId IN (
+		SELECT d.intClientId
+			FROM tbldonation d
+	) ");
+	$row_countdonortypeb = mysqli_fetch_assoc($fetch_donorcounttypeb);
+	$countdonortypeb = $row_countdonortypeb["Donor Count"];
+	// type a
+	$fetch_donorcounttypeo = mysqli_query($connections, " SELECT bt.stfBloodType, COUNT(c.intClientId) AS 'Donor Count'
+	FROM tblbloodtype bt
+	JOIN tblclient c ON bt.intBloodTypeId = c.intBloodTypeId
+	WHERE c.stfClientType = 'Donor'
+	AND stfBloodType = 'O'
+	AND c.intClientId IN (
+		SELECT d.intClientId
+			FROM tbldonation d
+	) ");
+	$row_countdonortypeo = mysqli_fetch_assoc($fetch_donorcounttypeo);
+	$countdonortypeo = $row_countdonortypeo["Donor Count"];
+
+//graphs section
+
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 col-lg-12 p-0">
+              <div class="content-container">
+                <div class="d-flex flex-row justify-content-center">
+                  <div class="text-center align-self-center" style="width: 500pt;">
+                    <h4>Remaining Blood Bags</h4>
+                    <canvas id="bloodbagcountperbloodtype"></canvas>
+                  </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center">
+                  <div class="text-center mt-2 align-self-center" style="width: 500pt;">
+                    <h4>Wastage</h4>
+                    <canvas id="wastage"></canvas>
+                  </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center">
+                  <div class="text-center mt-2 align-self-center" style="width: 500pt">
+                    <h4>Donor Count per blood type</h4>
+                    <canvas id="donorcountperbloodtype"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+//Fetching Counts with loop
+	$arr_bloodtypes = array();
+	class BloodTypeCount	{
+		public $type;
+		public $count;
+	}
+	
+	$fetch_bloodtypes = mysqli_query($connections, "
+		SELECT DISTINCT(stfBloodType) AS 'Blood Type'
+		FROM tblbloodtype
+		WHERE stfBloodTypeStatus = 'Active'
+		AND stfBloodType != 'Undefined'
+	");
+	while($row_bloodtypes = mysqli_fetch_assoc($fetch_bloodtypes))	{
+		//$arr_bloodtypes[] = $row_bloodtypes['Blood Type'];
+		$varBloodType = $row_bloodtypes['Blood Type'];
+		
+		$objBloodTypeCount = new BloodTypeCount();
+		
+		$objBloodTypeCount -> $type = $varBloodType;
+		
+		array_push($arr_bloodtypes, $objBloodTypeCount);
+	}
+	
+	$countbloodtypes = mysqli_num_rows($fetch_bloodtypes);
+	$arr_bloodbagbloodtypecount = array();
+	
+	for($x=0; $x<$countbloodtypes; $x++)	{
+			$fetch_countofbloodbagtype = mysqli_query($connections, "
+				SELECT COUNT(tbb.intBloodBagId) AS 'bloodbagcount'
+				FROM tblbloodtype tbt
+				JOIN tblbloodbag tbb ON tbt.intBloodTypeId = tbb.intBloodTypeId
+				JOIN tblpreservatives tp ON tbb.intPreservativeId = tp.intPreservativeId
+				WHERE tbt.intBloodTypeId IN	(
+					SELECT intBloodTypeId
+					FROM tblbloodtype
+					WHERE stfBloodType = '$arr_bloodtypes[$x]')
+				AND stfIsBloodBagExpired = 'No'
+				AND stfIsBloodBagDiscarded = 'No'
+				AND tbt.stfBloodType = '$arr_bloodtypes[$x]'
+				AND TIMESTAMPDIFF(DAY, dtmDateStored, NOW()) <= tp.intPreservativeLifespan"
+			);
+			$row_countbloodbagtype = mysqli_fetch_assoc($fetch_countofbloodbagtype);
+			$arr_bloodbagbloodtypecount[] = $row_countbloodbagtype["bloodbagcount"];
+			
+			$objBloodTypeCount = new BloodTypeCount();
+		
+			$objBloodTypeCount -> $count = $varBloodType;
+			
+			array_push($arr_bloodtypes, $objBloodTypeCount);
+	}
+	
+	//end

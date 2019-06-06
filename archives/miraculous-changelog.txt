@@ -1,0 +1,65 @@
+General Changes:
+*Headers adjusted padding
+*Table
+	*bg-color = red
+	*align-middle
+	*Action buttons styled
+	*column widths tweaked
+*Modals styled
+*Pagination buttons tweaked
+*Code alignments and tweaks
+*rhesus: word -> symbol (on dropdowns in modal)
+*DataTables' Action dolumn -> unsortable
+*Name - First Middle Last -> Last, First Middle (following the standards of name's naming convention)
+*tweaked/added swal
+*added Clear button on Add modals
+
+------------------------------
+
+Blood Type/Blood Component/Disease:
+*General
+
+Donor List:
+*General Changes
+*Checking Survey
+	*Donor Survey Answers
+		*General Changes
+			*Action buttons, Acceptable/Unacceptable
+
+Donor:
+*fixed Client Type sorting
+*Donor Info
+	*tweaked donor's profile
+	*emphasized Blood Type display
+	*Donations "standing" -> Total (blue) / Passed (green) / Failed (red)
+	*screenings column on Donations data table
+		Legend of donation remarks:
+		*Passed - green check icon
+		*Failed - red cross icon
+		*Current/Unchecked Survey - solid blue circle icon
+		*Skipped - gray double arrow head (if one of the screenings has failed or survey answers has been expired, the succeeding screenings will be skipped)
+		*Waiting - blue pause icon (pending screenings)
+	*View Donor Donation
+		*General Changes
+		*collapsible tables
+	
+Login:
+*changed field highlight to red (compliance for color theme)
+
+Sidebar:
+*well-aligned list
+*preservative icon: medicine -> vial
+*survey category: file-alt -> bars
+
+Graphs:
+*2 graphs per row
+Why? tedious masyado pag 1 graph per row, kaya 2 na lang (balak ko 3 pero nah)
+
+*y-axis data: float -> int
+*added labels for x and y axes
+*max threshold for bar graphs = total of the data
+*stepsize/ticks = average data of the given data
+*removed unnecessary label/legend (change my mind)
+*hard-coded queries -> looped
+
+PS to Mel: yung main div ng mga graphs naputol sa magkabilang side (larger gray parts)
