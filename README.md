@@ -1,5 +1,6 @@
 # ReFeel: Blood Bank Monitoring and Inventory System
 
+This system is used to fulfill the courses:
 * INTE 3043: Systems Analysis and Design 
 * INTE 4213: Capstone Project
 
