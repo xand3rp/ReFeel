@@ -8,9 +8,10 @@
 	/* Username and Password has value */
 	if($varUn && $varPw)	{
 		$qryCheckUser = mysqli_query($conn, "
-		SELECT *
-		FROM tbluser
-		WHERE strUserName = '$varUn'");
+			SELECT *
+			FROM tbluser
+			WHERE strUserName = '$varUn'
+		");
 
 		// Checks and returns rows of the username entered
 		$qryCheckUserOcc = mysqli_num_rows($qryCheckUser);
@@ -26,10 +27,11 @@
 
 				if($varUserPw == $varPw)	{
 					$qryJoinView1 = mysqli_query($conn, "
-					SELECT c.intClientId, c.stfClientType
-					FROM tblclient c
-					JOIN tbluser u ON c.intUserId = u.intUserId
-					WHERE c.intUserId = '$varUserId'");
+						SELECT c.intClientId, c.stfClientType
+						FROM tblclient c
+						JOIN tbluser u ON c.intUserId = u.intUserId
+						WHERE c.intUserId = '$varUserId'
+					");
 					
 					while($row = mysqli_fetch_assoc($qryJoinView1))	{
 						$varDbId = $row["intClientId"];

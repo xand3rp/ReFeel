@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="icon" href="assets/images/blood.ico">
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
-		<link rel="stylesheet" href="assets/fa/css/all.min.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/bs-override.css" type="text/css">
+		<link rel="icon" href="../public/assets/blood.ico">
+		<link rel="stylesheet" href="../public/css/bs-override.css" type="text/css">
+		<link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="../public/fa/css/all.min.css" type="text/css">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="assets/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
-		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<title>ReFeel - Donor Donations</title>
 	</head>
 	<?php
@@ -16,9 +14,7 @@
 		include "fetchClientAcc.php";
 	?>
 	<body>
-		<?php
-			include "clientNavBar.php";
-		?>
+		<?php	include "clientNavBar.php";	?>
 		<div class="container">
 			<div class="card my-4" style="border-radius: 25px">
 				<div class="card-header bg-danger text-white text-center p-2" style="border-radius: 25px 25px 0px 0px; cursor: pointer;" href="#divDonRec">
@@ -66,7 +62,6 @@
 					?>
 				</div>
 			</div>
-			
 			<div class="card my-4" style="border-radius: 25px">
 				<div class="card-header bg-danger text-white text-center p-2" style="border-radius: 25px 25px 0px 0px; cursor: pointer;" data-toggle="collapse" href="#divDonRec" role="button" aria-expanded="false" aria-controls="collapseExample">
 					Donation Record
@@ -82,6 +77,8 @@
 			</div>
 		</div>
 	</body>
+	<script src="../public/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+	<script src="../public/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script>
 		$(document).ready(function()	{
 			var styles = $(this).serialize();

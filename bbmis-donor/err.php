@@ -11,7 +11,7 @@
 	<body>
 		<!-- Navigation bar -->
 		<nav class="navbar navbar-expand-lg bg-danger" style="color: white;">
-			<img src="assets/logo-w.png" style="width: 150px;" />
+			<img src="../public/img/logo-w.png" style="width: 150px;" />
 				<ul class="navbar-nav mr-auto">
 				</ul>
 				<div class="form-inline my-2 my-lg-0">

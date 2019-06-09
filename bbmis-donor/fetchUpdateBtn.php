@@ -7,20 +7,17 @@
 			<input type='submit' value='Request for Update' id='btnReq' class='btn btn-outline-danger' />
 		";
 	}
-	
 	function btnWait()	{
 		echo "
 			<button class='btn btn-outline-danger' type='button' disabled='disabled'>Waiting for Response</button>
 		";
 	}
-	
 	function btnUpd()	{
 		echo "
 			<input type='hidden' name='btnAct' value='Update' />
 			<input type='submit' value='Update' id='btnUpd' class='btn btn-outline-danger' />
 		";
 	}
-	
 	function btnCld($varCooldown)	{
 		echo "
 		<button class='btn btn-outline-danger' type='button' title='You can update again your personal information after $varCooldown day/s.' disabled='disabled'>
@@ -28,7 +25,6 @@
 		</button>
 		";
 	}
-	
 	//Latest request record of the client.
 	$qryFetchReq = mysqli_query($conn, "
 		SELECT stfRequestStatus, stfRequestFeedback, stfUpdateStatus, dtmDateRequested, TIMESTAMPDIFF(DAY, dtmDateRequested, NOW()) AS 'Requested Day Difference', dtmDateUpdated, TIMESTAMPDIFF(DAY, dtmDateUpdated, NOW()) AS 'Updated Day Difference'

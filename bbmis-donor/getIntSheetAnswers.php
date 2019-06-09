@@ -80,7 +80,12 @@
 			$qryMaleFemExcRem = mysqli_query($conn, "
 				UPDATE tblmedicalexam
 				SET stfAnswerRemarks = 'Correct', dtmExamChecked = NOW()
-				WHERE intQuestionId IN (SELECT intQuestionId FROM tblquestion WHERE intQuestionCategoryId = 3 AND boolVersionInUse = '1');
+				WHERE intQuestionId IN (
+					SELECT intQuestionId
+					FROM tblquestion
+					WHERE intQuestionCategoryId = 3
+					AND boolVersionInUse = '1'
+				);
 			");
 		}
 	}

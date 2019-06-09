@@ -25,30 +25,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	$("#frmClientLogin").submit(function(e){
-		e.preventDefault();
-		var formdata = $(this).serialize();
-		console.log(formdata);
-		$.ajax({
-			url:"valClientLogin.php",
-			type:"POST",
-			data:{formdata:formdata},
-			success:function(data){
-				console.log(data);
-				if(data == 1){
-					window.location.href = "clientHome.php";
-				}
-				else if (data == 2) {
-					swal("Oops!", "Donor and applicants are only allowed to access the donor side page.", "error");
-				}
-				else if (data == 3) {
-					swal("Oops!", "Password is incorrect.", "error");
-				}
-				else if (data == 4) {
-					swal("Oops!", "Account is not existing, please register first.", "error");
-				}
-			}
-		})
-	});
-</script>

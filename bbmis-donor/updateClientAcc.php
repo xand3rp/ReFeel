@@ -11,9 +11,10 @@
 	//Personal Information
 	if($varBtnVal == "Request")	{
 		$qryInsertReq = mysqli_query($conn, "
-		INSERT INTO tblrequest(intClientId, stfRequestStatus, dtmDateRequested)
-		VALUES($varDbId, 'Requested', NOW())");
-		echo '1';
+			INSERT INTO tblrequest(intClientId, stfRequestStatus, dtmDateRequested)
+			VALUES($varDbId, 'Requested', NOW())
+		");
+		echo 1;
 	}
 	
 	else if($varBtnVal == "Update")	{
@@ -28,15 +29,17 @@
 		$varNewOcc = ucwords(strtolower(ltrim(rtrim($params["txtNewOcc"]))));
 		
 		$qryUpdatePI = mysqli_query($conn, "
-		UPDATE tblclient
-		SET strClientFirstName = '$varNewFname',
-		strClientMiddleName = '$varNewMname',
-		strClientLastName = '$varNewLname',	
-		stfClientSex = '$varNewSex',	
-		stfClientCivilStatus = '$varNewCvlStat',
-		datClientBirthday = '$varNewBy/$varNewBm/$varNewBd',
-		strClientOccupation = '$varNewOcc'
-		WHERE intClientId = '$varDbId'");
+			UPDATE tblclient
+			SET
+				strClientFirstName = '$varNewFname',
+				strClientMiddleName = '$varNewMname',
+				strClientLastName = '$varNewLname',	
+				stfClientSex = '$varNewSex',	
+				stfClientCivilStatus = '$varNewCvlStat',
+				datClientBirthday = '$varNewBy/$varNewBm/$varNewBd',
+				strClientOccupation = '$varNewOcc'
+			WHERE intClientId = $varDbId
+		");
 		
 		$varChanges = '';
 		
@@ -71,7 +74,7 @@
 		$qryLatestReqId = mysqli_query($conn, "
 			SELECT intClientReqId
 			FROM tblrequest
-			WHERE intClientId = '$varDbId'
+			WHERE intClientId = $varDbId
 			ORDER BY intClientReqId DESC
 			LIMIT 1
 		");
@@ -82,12 +85,15 @@
 		
 		$qryUpdated = mysqli_query($conn, "
 			UPDATE tblrequest
-			SET stfUpdateStatus = 'Updated', txtChanges = '$varChanges', dtmDateUpdated = NOW()
-			WHERE intClientId = '$varDbId'
+			SET
+				stfUpdateStatus = 'Updated',
+				txtChanges = $varChanges,
+				dtmDateUpdated = NOW()
+			WHERE intClientId = $varDbId
 			AND intClientReqId = $varLatestReqId
 		");
 		
-		echo '2';
+		echo 2;
 	}
 	
 	//Contact Information
@@ -97,12 +103,13 @@
 		
 		$qryUpdateContNo = mysqli_query($conn, "
 			UPDATE tblclient
-			SET strClientContact = '$varNewContNo',
-			txtClientEmail = '$varNewEmail'
+			SET
+				strClientContact = '$varNewContNo',
+				txtClientEmail = '$varNewEmail'
 			WHERE intClientId = $varDbId
 		");
 		
-		echo '3';
+		echo 3;
 	}
 	
 	//Account Credentials
@@ -116,28 +123,32 @@
 		if($varPw == $varOldPw)	{
 			if($varNewPw == $varConfNewPw)	{
 				$qryUpdateAccCred = mysqli_query($conn, "
-				UPDATE tbluser
-				SET strUserName = '$varNewUn', strUserPassword = '$varNewPw'
-				WHERE intUserId = (
-					SELECT intUserId
-					FROM tblclient
-					WHERE intClientId = '$varDbId')");
+					UPDATE tbluser
+					SET
+						strUserName = '$varNewUn',
+						strUserPassword = '$varNewPw'
+					WHERE intUserId = (
+						SELECT intUserId
+						FROM tblclient
+						WHERE intClientId = $varDbId
+					)
+				");
 				
 				if($qryUpdateAccCred)	{
 					//account credentials is updated!
-					echo "1";
+					echo 1;
 				}
 			}
 			
 			else	{
 				//new and confimation passwords does not match.
-				echo "2";
+				echo 2;
 			}
 		}
 		
 		else	{
 			//recent password is incorrect
-			echo "3";
+			echo 3;
 		}
 	}
 ?>

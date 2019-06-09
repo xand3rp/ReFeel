@@ -1,6 +1,13 @@
 <?php
 	$qryFetchDonations = mysqli_query($conn, "
-		SELECT d.intDonationId, MAX(me.dtmExamTaken) AS 'Exam Taken', ss.dtmDateScreened AS 'Date Screened', bv.intBloodVolume AS 'Amount Bled', ss.strPhlebotomist AS 'Phlebotomist', d.stfDonationStatus, d.stfDonationRemarks
+		SELECT
+			d.intDonationId,
+			MAX(me.dtmExamTaken) AS 'Exam Taken',
+			ss.dtmDateScreened AS 'Date Screened',
+			bv.intBloodVolume AS 'Amount Bled',
+			ss.strPhlebotomist AS 'Phlebotomist',
+			d.stfDonationStatus,
+			d.stfDonationRemarks
 		FROM tbldonation d
 		JOIN tblmedicalexam me ON d.intDonationId = me.intDonationId
 		JOIN tblphysicalexam pe ON me.intDonationId = pe.intDonationId

@@ -3,21 +3,22 @@
 	session_start();
 	$varDbId = $_SESSION["sessId"];
 
-	$getClientQry = mysqli_query($conn,"SELECT * FROM tblclient WHERE intClientId = '$varDbId'");
-	if(mysqli_num_rows($getClientQry)>0){
-		while($row = mysqli_fetch_assoc($getClientQry)){
-			$clientid = $row['intClientId'];
-		}
-	}
+	$qryFetchClientId = mysqli_query($conn,"
+		SELECT intClientId
+		FROM tblclient
+		WHERE intClientId = '$varDbId'
+	");
+	while($rowFetchClientId = mysqli_fetch_assoc($qryFetchClientId));
+	$varClientId = $rowFetchClientId["intClientId"];
 
-	require('assets/fpdf/fpdf.php');
+	require("../public/fpdf/fpdf.php");
 
 	$pdf = new FPDF('P', 'in', 'Letter');
 	$pdf -> SetMargins(0, 0.5, 0);
 	$pdf -> SetFont('Times','',12);
 	$pdf -> AddPage();
 
-	$pdf -> Image('assets/images/logo-a1.png', 0.35, 0.35, 1.75);
+	$pdf -> Image("../public/assets/logo-a1.png", 0.35, 0.35, 1.75);
 
 	$pdf -> SetFont('Arial', 'B', 20);
 	$pdf -> Text(2.25, 0.95, 'Medical Exam Interview Sheet');
@@ -153,34 +154,6 @@
 		");
 
 		while($rowItemAns = mysqli_fetch_assoc($qryFetchItemAns))	{
-			//Items and Answers - Cell
-			// $pdf -> SetX(0.5);
-			// $pdf -> SetFont('Arial', '', 11.5);
-			// $pdf -> SetTextColor(0, 0, 0);
-			// $pdf -> Cell(0.35, 0.3, $varCountItems, 1, 0, 'C');
-			// $pdf -> Cell(3.575, 0.3, $rowItemAns["txtQuestion"], 1, 0, 'L');
-			// $pdf -> Cell(3.575, 0.3, 'Answer', 1, 1, 'C');
-
-			//Items and Answers - MultiCell
-			// $pdf -> SetFont('Arial', '', 11.5);
-			// $pdf -> SetTextColor(0, 0, 0);
-			// $pdf -> SetX(0.5);
-			// $pdf -> MultiCell(0.35, 0.3, $varCountItems, 1, 'C');
-			// $pdf -> SetX(0.85);
-			// $pdf -> MultiCell(3.575, 0.3, $rowItemAns["txtQuestion"], 1);
-			// $pdf -> SetX(4.425);
-			// $pdf -> MultiCell(3.575, 0.3, 'Answer', 1, 'C');
-
-			//Hagdan
-			// $pdf -> SetFont('Arial', '', 11.5);
-			// $pdf -> SetTextColor(0, 0, 0);
-			// $pdf -> SetX(0.5);
-			// $pdf -> MultiCell(0.35, 0.3, $varCountItems, 1, 'C');
-			// $pdf -> SetX(0.85);
-			// $pdf -> MultiCell(3.575, 0.3, $rowItemAns["txtQuestion"], 1);
-			// $pdf -> SetX(4.425);
-			// $pdf -> MultiCell(3.575, 0.3, 'Answer', 1, 'C');
-
 			// Attempt 3
 			$varWdNo = 0.35;
 			$varWdQA = 3.575;
@@ -258,6 +231,5 @@
 	$pdf -> SetX(4.5);
 	$pdf -> Cell(3, 0.3, 'Signature over Printed Name', 0, 0, 'C');
 
-	// $pdf -> Output('D', 'ReFeel-MedEx-' . $varDonCode. '.pdf');
 	$pdf -> Output();
 ?>

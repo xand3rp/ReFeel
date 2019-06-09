@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="icon" href="assets/images/blood.ico">
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
-		<link rel="stylesheet" href="assets/fa/css/all.min.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/bs-override.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+		<link rel="icon" href="../public/assets/blood.ico">
+		<link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="../public/css/bs-override.css" type="text/css">
+		<link rel="stylesheet" href="../public/fa/css/all.min.css" type="text/css">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="assets/swal/sweetalert.min.js" type="text/javascript"></script>
-		<script src="assets/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
-		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<title>ReFeel - Interview Sheet</title>
+		<script src="../public/swal/sweetalert.min.js" type="text/javascript"></script>
+		<script src="../public/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script src="../public/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	</head>
 	<?php
 		include "checkSession.php";
@@ -30,33 +29,13 @@
 		<div class="container mb-4">
 			<form id="frmIntSheet" method="POST">
 				<?php
-					include "fetchIntSheetQuestions-table.php";
+					include "fetchIntSheetQuestions.php";
 					include "fetchIntSheetPrompts.php";
 				?>
 			</form>
 			<!--button type='submit' id='btnEmpty'>Truncate Records</button-->
 		</div>
-		<a href="#headTitle">
-			<button id="btnTop" class="btn btn-lg btn-danger" title="Back to Top">
-				<i class="fa fa-angle-double-up"></i>
-			</button>
-		</a>
 	</body>
-	<!-- Animation scripts -->
-	<script>
-		// When the user scrolls down 20px from the top of the document, show button
-		window.onscroll = function() {scrollFunction()};
-
-		function scrollFunction() {
-			if(document.body.scrollTop < 20 || document.documentElement.scrollTop > 20) {
-				document.getElementById("btnTop").style.animationPlayState = "running";
-			} 
-			else	{
-				document.getElementById("btnTop").style.animationDirection = "reverse";
-				document.getElementById("btnTop").style.animationPlayState = "running";
-			}
-		}
-	</script>
 	<script>
 		$(document).ready(function()	{
 			var intsheetanswers = $(this).serialize();
@@ -68,19 +47,12 @@
 					if(data != '')	{
 						//console.log(data);
 						var varObj = jQuery.parseJSON(data);
+						console.log(varObj);
 						var varObjLng = varObj.length;
 						
 						console.log(varObj);
 						
-						for(x=0; x<varObjLng; x++)	{
-							// console.log(varObj[x].id);
-							// console.log(varObj[x].yn);
-							// console.log(varObj[x].str);
-							// console.log(varObj[x].dm);
-							// console.log(varObj[x].dd);
-							// console.log(varObj[x].dy);
-							// console.log(varObj[x].qua);
-							
+						for(x=0; x<varObjLng; x++)	{							
 							$("input[type='radio'][name='txtYn" + varObj[x].id + "'][value='" + varObj[x].yn + "']").prop('checked', true);
 							$("#btnYn" + varObj[x].id + "[value='" + varObj[x].yn + "']").addClass("active");
 							

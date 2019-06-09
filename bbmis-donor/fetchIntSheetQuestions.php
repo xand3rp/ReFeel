@@ -32,8 +32,6 @@
 	else	{
 		$varVersionToUse = $varVersionInUse;
 	}
-	
-	$varQueCount = 1;
 
 	$qryDistQueCtg = mysqli_query($conn, "
 		SELECT DISTINCT(qc.stfQuestionCategory)
@@ -44,10 +42,15 @@
 	
 	$varCountQueCtg = mysqli_num_rows($qryDistQueCtg);
 	
-	$qryCliSex = mysqli_query($conn, "SELECT stfClientSex FROM tblclient WHERE intClientId = $varDbId");
+	$qryCliSex = mysqli_query($conn, "
+		SELECT stfClientSex
+		FROM tblclient
+		WHERE intClientId = $varDbId");
 	$rowCliSex = mysqli_fetch_assoc($qryCliSex);
 	$varSex = $rowCliSex["stfClientSex"];
 
+	$varQueCount = 1;
+	
 	function typeYn($varQueId)	{
 		echo "
 				<div class='row'>
@@ -62,7 +65,6 @@
 				</div>
 		";
 	}
-
 	function typeDate($varQueId)	{
 		echo "
 				<div class='row mt-3'>
@@ -70,12 +72,10 @@
 						<select class='form-control' name='optDm$varQueId' placeholder='Month'>
 						<option value='00'>Month</option>';
 						";
-
-								for($m=1; $m<=12; $m++) {
-									$month = date("F", mktime(0,0,0,$m, 1, date("Y")));
-									echo "<option value='$m'>$month</option>'";
-								}
-
+							for($m=1; $m<=12; $m++) {
+								$month = date("F", mktime(0,0,0,$m, 1, date("Y")));
+								echo "<option value='$m'>$month</option>'";
+							}
 		echo "
 						</select>
 					</div>
@@ -88,7 +88,6 @@
 								<option value='$d'>$d</option>
 							";
 						}
-
 		echo "
 						</select>
 					</div>
@@ -107,7 +106,6 @@
 				</div>
 		";
 	}
-
 	function typeQua($varQueId)	{
 		echo "
 				<div class='row'>
@@ -117,11 +115,10 @@
 				</div>
 		";
 	}
-
 	function typeStr($varQueId)	{
 		echo "
 				<div class='row'>
-					<div class='form-group m-auto  mt-3'>
+					<div class='form-group m-auto mt-3'>
 						<input type='text' class='form-control' name='txtStr$varQueId'/>
 					</div>
 				</div>

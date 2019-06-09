@@ -6,14 +6,14 @@
 		WHERE d.intClientId = $varDbId
 	");
 	while($rowDonationIdDate = mysqli_fetch_assoc($qryFetchDonationIdDate))	{
-		$varDonaId = $rowDonationIdDate["intDonationId"];
+		$varDonId = $rowDonationIdDate["intDonationId"];
 		$varExamTaken = $rowDonationIdDate["dtmExamTaken"];
 	}
 	
 	if(isset($varDonaId))	{
-		echo 'Donation Code: ' . $varDonaId . date_format(date_create($varExamTaken), 'Ymd');
+		echo "Donation Code: " . $varDonId . date_format(date_create($varExamTaken), 'Ymd');
 	}
 	else	{
-		echo 'Donation Code: 000000000';
+		echo "Donation Code: 000000000";
 	}
 ?>

@@ -1,11 +1,25 @@
 <?php
-	$qryJoinView = mysqli_query($conn, "
-	SELECT c.strClientFirstName,  c.strClientMiddleName, c.strClientLastName, c.strClientContact, c.txtClientEmail, c.stfClientSex, c.stfClientCivilStatus, c.datClientBirthday, TIMESTAMPDIFF(YEAR, c.datClientBirthday, NOW()) AS 'Age', c.strClientOccupation, c.stfClientType, u.strUserName, u.strUserPassword, u.strUserImageDir
+	$qryClientProfile = mysqli_query($conn, "
+	SELECT
+		c.strClientFirstName,
+		c.strClientMiddleName,
+		c.strClientLastName,
+		c.strClientContact,
+		c.txtClientEmail,
+		c.stfClientSex,
+		c.stfClientCivilStatus,
+		c.datClientBirthday,
+		TIMESTAMPDIFF(YEAR, c.datClientBirthday, NOW()) AS 'Age',
+		c.strClientOccupation,
+		c.stfClientType,
+		u.strUserName,
+		u.strUserPassword,
+		u.strUserImageDir
 	FROM tblclient c
 	JOIN tbluser u ON c.intUserId = u.intUserId
 	WHERE c.intClientId = '$varDbId'");
 	
-	while($row = mysqli_fetch_assoc($qryJoinView))	{
+	while($row = mysqli_fetch_assoc($qryClientProfile))	{
 		$varFname = $row["strClientFirstName"];
 		$varMname = $row["strClientMiddleName"];
 		$varLname = $row["strClientLastName"];

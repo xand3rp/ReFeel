@@ -38,13 +38,11 @@
 		");
 		
 		$varMeRemarks = array();
-		// $varCountMeRemarks = array();
 		
 		$varCount = 0;
 		
 		while($rowMeRemarks = mysqli_fetch_assoc($qryFetchMeRemarks))	{
 			$varMeRemarks[$varCount] = $rowMeRemarks["stfAnswerRemarks"];
-			// $varCountMeRemarks[$varCount] = $rowMeRemarks["Remarks Count"];
 			$varCount++;
 		}
 		
