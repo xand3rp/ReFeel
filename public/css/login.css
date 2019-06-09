@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'BPreplay';
+    src: url('../fonts/BPreplay.otf');
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    font-family: 'Lato-Regular';
+    margin: 0;
+    background-color: #eee;
+}
+
+.contents {
+    padding: 0;
+    border-radius: 3pt;
+    background-color: white;
+    width: 35%;
+    /* border: 1px solid rgba(0, 0, 0, .125); */
+    margin-top: 3rem;
+    box-shadow: 0 0 7px 1px #bdbdbd;
+}
+
+.form-container {
+    background-color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.login-form {
+    margin-top: 3rem;
+}
+
+.inp-grp {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.grp-icn {
+    background-color: #eee;
+}
+
+.grp-txtfield {
+    width: 100%;
+}
+
+.submit {
+    margin-top: 1rem;
+    background-color: #DC4640;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    font-family: 'Roboto-Regular';
+    padding: .5rem;
+}

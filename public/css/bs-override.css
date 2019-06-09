@@ -1,0 +1,96 @@
+
+/* Old modification: */
+
+/* .dropdown-item:active{color:#fff;text-decoration:none;background-color:#dc3545} */
+
+/* .dropdown-item:focus{color:#fff;text-decoration:none;background-color:#dc3545} */
+
+/* .form-control:focus{color:#495057;background-color:#fff;border-color:#dc3545;outline:0;box-shadow:0 0 0 .2rem rgba(237,154,162,.5)} */
+
+/* .form-control[readonly]{background-color:#fff;} */
+
+/* .btn:focus,.btn:hover,.page-link:focus,.page-link:hover{text-decoration:none} */
+/* .btn:focus,.btn:hover,.page-link:focus,.page-link:hover{outline:0;box-shadow:0 0 0 .1rem rgba(237,154,162,.5)} */
+
+
+/* .dropdown-item:active{color:#fff;text-decoration:none;background-color:#fa3c4c} */
+
+/* .dropdown-item:focus{color:#fff;text-decoration:none;background-color:#fa3c4c} */
+
+/* .btn:focus,.btn:hover,.page-link:focus,.page-link:hover{text-decoration:none} */
+/* .btn:focus,.btn:hover,.page-link:focus,.page-link:hover{outline:0;box-shadow:0 0 0 .1rem rgba(237,154,162,0.5)} */
+
+/* .btn-danger:focus,.btn-danger:hover{text-decoration:none} */
+/* .btn-danger:focus,.btn-danger:hover{outline:0;box-shadow:0 0 0 .2rem rgba(237,154,162,.5)} */
+
+/* .btn-outline-danger:focus,.btn-outline-danger:hover{text-decoration:none} */
+/* .btn-outline-danger:focus,.btn-outline-danger:hover{outline:0;box-shadow:0 0 0 .2rem rgba(237,154,162,.5)} */
+
+/* .dropdown-menu { */
+  /* right: 0; */
+/* } */
+
+/* a:link, a:visited, a:hover, a:active{color:#dc3545;} */
+
+.form-control:focus, .form-control-file:focus	{
+	color: #495057;
+	background-color: #fff;
+	border-color: #fa3c4c;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(237,154,162,.5)
+}
+
+.form-control[readonly]{background-color:#fff;}
+
+/* Request ni Ma'am Fab na walang scroll bar pero nakakapagscroll parin */
+::-webkit-scrollbar {
+	display: none;
+}
+
+/* Discussed default theme hex. */
+:root	{
+	--danger: #fa3c4c;
+}
+
+.bg-danger	{
+	background-color: #fa3c4c!important;
+}
+
+.btn-danger	{
+	background-color: #fa3c4c!important;
+	/* border-color: #fa3c4c!important; */
+}
+
+/* For pagination. */
+.pagination	{
+	padding: 10px 10px 10px 0px;
+}
+
+.page-item.active	> a	{
+	background-color: #fa3c4c!important;
+	border-color: #fa3c4c!important;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(237,154,162,.5)!important;
+}
+
+.page-item  > a	{
+	color: #fa3c4c;
+	border-color: #dee2e6;
+	background-color: white;
+}
+
+.page-item  > a:hover	{
+	background-color: #fa3c4c;
+	color: white;
+	border-color: #fa3c4c!important;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(237,154,162,.5)!important;
+}
+
+.page-item  > a:focus	{
+	color: #fa3c4c;
+	background-color: white;
+	/* border-color: #fa3c4c!important; */
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(237,154,162,.5)!important;
+}

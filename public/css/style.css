@@ -1,0 +1,24 @@
+#btnTop	{
+	height: 65px;
+	width: 65px;
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	border-radius: 50px;
+	animation-name: animBtnTop;
+	animation-duration: 0.75s;
+	animation-play-state: paused;
+}
+
+@keyframes animBtnTop	{
+	from {
+		height: 1px;
+		width: 1px;
+		opacity: 0;
+	}
+	to	{
+		height: 65px;
+		width: 65px;
+		opacity: 1;
+	}
+}

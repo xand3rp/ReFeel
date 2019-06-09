@@ -1,0 +1,419 @@
+/* @font-face {
+    font-family: 'Futura-Bold';
+    src: url('../fonts/Futura-Bold/Futura-Bold.eot');
+    src: url('../fonts/Futura-Bold/Futura-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Futura-Bold/Futura-Bold.woff2') format('woff2'),
+        url('../fonts/Futura-Bold/Futura-Bold.woff') format('woff'),
+        url('../fonts/Futura-Bold/Futura-Bold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+} */
+
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../fonts/Lato-Regular/Lato-Regular.eot');
+    src: url('../fonts/Lato-Regular/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Regular/Lato-Regular.woff2') format('woff2'),
+        url('../fonts/Lato-Regular/Lato-Regular.woff') format('woff'),
+        url('../fonts/Lato-Regular/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'Futura-BQ';
+    src: url('../fonts/Futura-Outline/FuturaBQ-BoldOutline.eot');
+    src: url('../fonts/Futura-Outline/FuturaBQ-BoldOutline.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Futura-Outline/FuturaBQ-BoldOutline.woff2') format('woff2'),
+        url('../fonts/Futura-Outline/FuturaBQ-BoldOutline.woff') format('woff'),
+        url('../fonts/Futura-Outline/FuturaBQ-BoldOutline.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+} */
+
+@font-face {
+    font-family: 'Cocogoose';
+    src: url('../fonts/Cocogoose/Cocogoose.eot');
+    src: url('../fonts/Cocogoose/Cocogoose.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Cocogoose/Cocogoose.woff2') format('woff2'),
+        url('../fonts/Cocogoose/Cocogoose.woff') format('woff'),
+        url('../fonts/Cocogoose/Cocogoose.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../fonts/Lato-Bold/Lato-Bold.eot');
+    src: url('../fonts/Lato-Bold/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Lato-Bold/Lato-Bold.woff2') format('woff2'),
+        url('../fonts/Lato-Bold/Lato-Bold.woff') format('woff'),
+        url('../fonts/Lato-Bold/Lato-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f1ebeb;
+    font-family: 'Lato-Regular';
+}
+
+/********** LOADER  **********/
+.loader {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center !important;
+}
+
+.heart {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: #f00;
+    transform: rotate(45deg);
+    animation: beat 3s linear infinite;
+}
+
+.heart:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    border-radius: 50%;
+}
+
+.heart:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    border-radius: 50%;
+}
+
+@keyframes beat {
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(45deg) scale(1.2);
+    }
+
+    50% {
+        transform: rotate(45deg) scale(1.1);
+    }
+
+    75% {
+        transform: rotate(45deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+/******* end loader ********/
+
+.wrapper {
+    text-align: left;
+}
+
+.system-title {
+    background-color: #FF4848;
+    height: 4rem;
+}
+
+.logo {
+    background-color: #FF4848;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.system-logo {
+    max-width: 100%;
+    height: auto;
+    float: left !important;
+    padding: .3rem;
+    width: 40%;
+}
+
+.header {
+    background-color: #FF7575;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 4rem;
+    width: 100%;
+}
+
+.mainpanel {
+    width: calc(100% - 20%);
+    float: right;
+}
+
+.navigation-wrapper {
+    height: calc(100vh - 4rem);
+    overflow: auto;
+    padding: .15rem 0;
+    background-color: white;
+}
+
+.sidebar {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100%;
+    max-height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.navigation-wrapper::-webkit-scrollbar {
+    max-width: 7px;
+}
+
+.navigation-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.navigation-wrapper::-webkit-scrollbar-thumb {
+    background: #a8a6a6;
+}
+
+.navigation-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+}
+
+.navigation-wrapper::-webkit-scrollbar-thumb:horizontal {
+    width: 10px;
+}
+
+/*******/
+.scrollable-menu::-webkit-scrollbar {
+    max-width: 7px;
+}
+
+.scrollable-menu::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.scrollable-menu::-webkit-scrollbar-thumb {
+    background: #a8a6a6;
+}
+
+.scrollable-menu::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+}
+
+.scrollable-menu::-webkit-scrollbar-thumb:horizontal {
+    width: 10px;
+}
+
+.btn-logout {
+    color: rgb(247, 236, 236);
+    align-self: flex-end;
+    background: none;
+    border: none;
+    padding: .3rem .75rem;
+}
+
+.btn-logout:hover {
+    color: white;
+}
+
+.content {
+    padding: .50rem .75rem;
+}
+
+.usr {
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.usrinfo {
+    padding-left: .5rem
+}
+
+ul .nav a {
+    color: #21214C;
+}
+
+.custom-nav {
+    margin-top: 15pt;
+    display: block;
+    /* padding: 0 1rem; */
+}
+
+.custom-nav-item {
+    display: block;
+    align-items: center;
+    /* padding: .5rem 1rem; */
+}
+
+.custom-nav-item>.nav-link {
+    color: #21214C;
+    font-weight: 600;
+}
+
+.custom-nav-item>.nav-link:hover {
+    color: #FF8A8A;
+}
+
+.custom-nav-item > .nav-link.active {
+    border-left: 3px solid #FF8A8A;
+    color: #FF8A8A;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.collapse .nav .nav-item .nav-link {
+    color: #21214C;
+}
+
+.collapse .nav .nav-item .nav-link:hover {
+    color: #FF8A8A;
+}
+
+.collapse .nav .nav-item .nav-link.active {
+    color: #FF8A8A;
+}
+
+.notif {
+    padding: .25rem .50rem;
+}
+
+.page-title {
+    background-color: white;
+    padding: .75rem 1rem;
+}
+
+.content-container {
+    background-color: #fff;
+    padding: .50rem 1rem;
+    border-top: 3px solid #1976D2;
+    border-radius: 2pt;
+}
+
+.client-info-card {
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    box-shadow: 0 0 1px 0 #d1d1d1;
+    padding: 15px;
+}
+
+.client-info-card:hover {
+    box-shadow: 0 0 20px 0 #d1d1d1;
+}
+
+.button-container {
+    border-top: 3px solid #FF4848;
+    background-color: rgb(238, 238, 238);
+    margin: 0px 0px 20px 0;
+    padding: 30px 30px 30px 30px;
+    scale: 1;
+}
+
+.storage-buttons {
+    background: #fff;
+}
+
+.storage-buttons:hover {
+    scale: 1.5;
+    -webkit-box-shadow: 5px 0px 5px 0px rgba(189, 189, 189, 0.75), 0px 5px 5px 0px rgba(189,189,189,0.75), 0px -5px 5px 0px rgba(189,189,189,0.75), -5px 0px 5px 0px rgba(189,189,189,0.75);
+    -moz-box-shadow: 5px 0px 5px 0px rgba(189, 189, 189, 0.75), 0px 5px 5px 0px rgba(189,189,189,0.75), 0px -5px 5px 0px rgba(189,189,189,0.75), -5px 0px 5px 0px rgba(189,189,189,0.75);
+    box-shadow: 5px 0px 5px 0px rgba(189, 189, 189, 0.75), 0px 5px 5px 0px rgba(189,189,189,0.75), 0px -5px 5px 0px rgba(189,189,189,0.75), -5px 0px 5px 0px rgba(189,189,189,0.75);
+}
+
+.my-legend {
+    margin-bottom: 3rem;
+}
+
+.my-legend .legend-title {
+    text-align: right;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.my-legend .legend-scale ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style: none;
+}
+
+.my-legend .legend-scale ul li {
+    display: block;
+    float: right;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+}
+
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: right;
+    height: 15px;
+    width: 50px;
+}
+
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+
+.my-legend a {
+    color: #777;
+}
+
+.notif-area {
+    width: 300px;
+    padding-left: 2rem;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 500px;
+    overflow-x: hidden;
+}
+
+.dPicker {
+    background: none;
+}
