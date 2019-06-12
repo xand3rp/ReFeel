@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/datatables.min.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Storage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
-  <link rel="stylesheet" href="../public/css/datatables.min.css">
-  <link rel="stylesheet" href="../public/css/bs-override.css">
+  <title>ReFeel - Storage</title>
 </head>
 <body>
   <?php include "components/loader.php"; ?>
@@ -254,9 +254,9 @@
     </div>
   </div>
   <?php include "components/core-script.php"; ?>
-  <script src="../public/js/datatables.min.js"></script>
-  <script src="../public/js/sweetalert.min.js"></script>
-  <script src="../public/js/notification.js"></script>
+  <script src="../../public/js/datatables.min.js"></script>
+  <script src="../../public/js/sweetalert.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('#maintenance').addClass('active');
     $('#storage').addClass('active');

@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/datatables.min.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
+  <link rel="stylesheet" href="../../public/css/jquery-ui.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ReFeel - Donor Records</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
-  <link rel="stylesheet" href="../public/css/datatables.min.css">
-  <link rel="stylesheet" href="../public/css/bs-override.css">
-  <link rel="stylesheet" href="../public/css/jquery-ui.css">
 </head>
 <body>
   <?php include "components/loader.php"; ?>
@@ -64,14 +64,11 @@
                   <h4><small><span class="badge badge-pill badge-dark" style="margin-right: 1rem;">2</span></small>Physical Exam</h4>
                   <form name="adddonorphysrecord">
                     <div class="row">
-                      <!-- <div class=""> -->
                       <div class="form-group col-md-5">
                         <label for="date_phys">Date Screened</label>
                         <input type="text" name="date_phys" class="screenDate form-control" readonly value=<?php echo $datenow ?> required>
                       </div>
-                      <!-- </div> -->
                       <div class="col-md-5">
-                        <!-- <div class="form-group"> -->
                         <label for="donorweight">Weight</label>
                         <div class="input-group">
                           <input type="number" class="form-control" id='donorweight' name="donorweight" required>
@@ -80,12 +77,9 @@
                           </div>
                         </div>
                         <input type ="hidden" name ="clientId_phys" id ="clientId_phys">
-                        <!-- </div> -->
                       </div>
                       <div class="col-md-5">
                         <label for="donorbloodpressure_systole">Blood Pressure</label>
-                        <!-- <div class="form-group"> -->
-                          <!-- <div class="row"> -->
                         <div class="input-group">
                           <input type="number" class="form-control col-md-4" id='donorbloodpressure_systole' name="donorbloodpressure_systole" required>
                           <input type="number" class="form-control col-md-4" id='donorbloodpressure_diastole' name="donorbloodpressure_diastole" required>
@@ -93,11 +87,8 @@
                             <div class="input-group-text">mmHg</div>
                           </div>
                         </div>
-                      <!-- </div> -->
-                    <!-- </div> -->
                       </div>
                       <div class="col-md-5">
-                        <!-- <div class="form-group"> -->
                         <label for="donorpulserate">Pulse Rate</label>
                         <div class="input-group">
                           <input type="text" class="form-control" id='donorpulserate' name="donorpulserate" required>
@@ -105,10 +96,8 @@
                             <div class="input-group-text">per minute</div>
                           </div>
                         </div>
-                        <!-- </div> -->
                       </div>
                       <div class="col-md-5">
-                        <!-- <div class="form-group"> -->
                         <label for="donortemperature">Temperature</label>
                         <div class="input-group">
                           <input type="number" class="form-control" id='donortemperature' name='donortemperature' required>
@@ -116,27 +105,19 @@
                             <div class="input-group-text">°C</div>
                           </div>
                         </div>
-                        <!-- </div> -->
                       </div>
-                      <!-- <div class=""> -->
                       <div class="form-group col-md-9">
                         <label for="donorgenapp">General Appearance</label>
                         <input type="text" class="form-control" id='donorgenapp' name="donorgenapp" required>
                       </div>
-                      <!-- </div> -->
-                      <!-- <div class=""> -->
                       <div class="form-group col-md-9">
                         <label for="donorheent">Head, Ears, Eyes, Nose & Throat (HEENT)</label>
                         <input type="text" class="form-control" id='donorheent' name="donorheent" required>
                       </div>
-                      <!-- </div> -->
-                      <!-- <div class=""> -->
                       <div class="form-group col-md-9">
                         <label for="donorheartlungs">Heart and Lungs</label>
                         <input type="text" class="form-control" id='donorheartlungs' name="donorheartlungs" required>
                       </div>
-                      <!-- </div> -->
-                      <!-- <div class=""> -->
                       <div class="form-group col-md-9">
                         <label for="examremarks">Exam Remarks</label>
                         <select class="form-control" id='examremarks' name="examremarks" required>
@@ -146,7 +127,6 @@
                           <option value="Permanently Deferred">Permanently Deferred</option>
                         </select>
                       </div>
-                      <!-- </div> -->
                       <div class="col-md-9" id = "amount" style="display : none;">
                         <div class="form-group">
                           <label for="bloodamount">Amount of Blood</label>
@@ -214,60 +194,54 @@
 														<td>
 															<input type="number" step = 'any' class="form-control BC_result" placeholder="Enter Result" name = "BC_result<?php echo $bloodcomponentid; ?>" id = "<?php echo $bloodcomponentid; ?>" data-ml ='<?php echo $maleleast; ?>' data-mm ='<?php echo $malemax; ?>' data-fl ='<?php echo $femaleleast; ?>'	data-fm ='<?php echo $femalemax; ?>' required="required">
 														</td>
-                            <!--  
-															<td>
-                                <label class="radio-inline"><input type="radio" name="BC_remarks<?php echo $bloodcomponentid; ?>" id="BC_remarks<?php echo $bloodcomponentid; ?>" value="Passed" required>Passed</label>
-                                <label class="radio-inline"><input type="radio" name="BC_remarks<?php echo $bloodcomponentid; ?>" id="optradio<?php echo $bloodcomponentid; ?>" value="Failed" required>Failed</label>
-                              </td>
-														-->
-                              <td>
-                                <button type = "button" class ="btn btn-success" disabled style="display:none;" id = "BCremarkspassed<?php echo $bloodcomponentid; ?>" >PASSED</button>
-                                <button type = "button" class ="btn btn-danger" disabled style="display:none;" id = "BCremarksfailed<?php echo $bloodcomponentid; ?>" >FAILED</button>
-                              </td>
-                              <td>
-                                <select class="form-control" name="BC_screener<?php echo $bloodcomponentid; ?>" id="BC_screener<?php echo $bloodcomponentid; ?>" required="required">
-                                <?php
-                                  include("connections.php");
+														<td>
+															<button type = "button" class ="btn btn-success" disabled style="display:none;" id = "BCremarkspassed<?php echo $bloodcomponentid; ?>" >PASSED</button>
+															<button type = "button" class ="btn btn-danger" disabled style="display:none;" id = "BCremarksfailed<?php echo $bloodcomponentid; ?>" >FAILED</button>
+														</td>
+														<td>
+															<select class="form-control" name="BC_screener<?php echo $bloodcomponentid; ?>" id="BC_screener<?php echo $bloodcomponentid; ?>" required="required">
+															<?php
+																include("connections.php");
 
-                                  $fetch_staff = mysqli_query($connections, "
-																		SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
-                                    FROM tblemployee
-																		WHERE stfEmployeeStatus = 'Active'
-                                  ");
-																	
-                                  if(mysqli_num_rows($fetch_staff) > 0 )	{
-                                    while($row = mysqli_fetch_assoc($fetch_staff))	{
-                                      $fullname = $row["Fullname"];
-                                ?>
-																	<option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
-                                <?php
-                                    }
-                                  }
-                                ?>
-                                </select>
-                              </td>
-                              <td>
-                                <select class="form-control" name="BC_verifier<?php echo $bloodcomponentid; ?>" id="BC_verifier<?php echo $bloodcomponentid; ?>" required>
-                                <?php
-                                  include("connections.php");
+																$fetch_staff = mysqli_query($connections, "
+																	SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
+																	FROM tblemployee
+																	WHERE stfEmployeeStatus = 'Active'
+																");
+																
+																if(mysqli_num_rows($fetch_staff) > 0 )	{
+																	while($row = mysqli_fetch_assoc($fetch_staff))	{
+																		$fullname = $row["Fullname"];
+															?>
+																<option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
+															<?php
+																	}
+																}
+															?>
+															</select>
+														</td>
+														<td>
+															<select class="form-control" name="BC_verifier<?php echo $bloodcomponentid; ?>" id="BC_verifier<?php echo $bloodcomponentid; ?>" required>
+															<?php
+																include("connections.php");
 
-                                  $fetch_staff = mysqli_query($connections, "
-																		SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
-																		FROM tblemployee WHERE stfEmployeeStatus = 'Active'
-                                  ");
+																$fetch_staff = mysqli_query($connections, "
+																	SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
+																	FROM tblemployee WHERE stfEmployeeStatus = 'Active'
+																");
 
-                                  if(mysqli_num_rows($fetch_staff) > 0 )	{
-                                    while($row = mysqli_fetch_assoc($fetch_staff))	{
-                                      $fullname = $row["Fullname"];
-                                ?>
-                                      <option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
-                                <?php
-                                    }
-                                  }
-                                ?>
-                                </select>
-                              </td>
-                            </tr>
+																if(mysqli_num_rows($fetch_staff) > 0 )	{
+																	while($row = mysqli_fetch_assoc($fetch_staff))	{
+																		$fullname = $row["Fullname"];
+															?>
+																		<option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
+															<?php
+																	}
+																}
+															?>
+															</select>
+														</td>
+													</tr>
                         <?php
 														}
 													}
@@ -325,67 +299,63 @@
 															$diseaseid = $row['intDiseaseId'];
 															$diseasename = $row['strDisease'];
                         ?>
-                            <input type ="hidden" value="<?php echo $diseaseid ?>" name ='hidden_ID' id='hidden_ID'>
-                            <input type ="hidden" value="<?php echo $diseasecount ?>" id ='hidden_count'>
-                            <tr>
-                              <td><?php echo $diseasename; ?></td>
-                              <td>
-																<input type="number" step = 'any' class="form-control d_remarks" placeholder="Enter Remarks" name = "D_remarks<?php echo $diseaseid; ?>" id = "<?php echo $diseaseid; ?>"  data-trial='hi' required>
-															</td>
-                              <td>
-                                <select class="form-control" name="D_screener<?php echo $diseaseid; ?>" id="D_screener<?php echo $diseaseid; ?>" required>
-                                <?php
-                                  include("connections.php");
+												<input type ="hidden" value="<?php echo $diseaseid ?>" name ='hidden_ID' id='hidden_ID'>
+												<input type ="hidden" value="<?php echo $diseasecount ?>" id ='hidden_count'>
+												<tr>
+													<td><?php echo $diseasename; ?></td>
+													<td>
+														<input type="number" step = 'any' class="form-control d_remarks" placeholder="Enter Remarks" name = "D_remarks<?php echo $diseaseid; ?>" id = "<?php echo $diseaseid; ?>"  data-trial='hi' required>
+													</td>
+													<td>
+														<select class="form-control" name="D_screener<?php echo $diseaseid; ?>" id="D_screener<?php echo $diseaseid; ?>" required>
+														<?php
+															include("connections.php");
 
-                                  $fetch_staff = mysqli_query($connections, "
-																		SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
-                                    FROM tblemployee
-																		WHERE stfEmployeeStatus = 'Active'
-                                  ");
+															$fetch_staff = mysqli_query($connections, "
+																SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
+																FROM tblemployee
+																WHERE stfEmployeeStatus = 'Active'
+															");
 
-                                  if(mysqli_num_rows($fetch_staff) > 0 )	{
-                                    while($row = mysqli_fetch_assoc($fetch_staff))	{
-                                      $fullname = $row["Fullname"];
+															if(mysqli_num_rows($fetch_staff) > 0 )	{
+																while($row = mysqli_fetch_assoc($fetch_staff))	{
+																	$fullname = $row["Fullname"];
 
-                                ?>
-                                      <option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
-                                <?php
-                                    }
-                                  }
-                                ?>
-                                </select>
-                              </td>
-                              <td>
-                                <select class="form-control" name="D_verifier<?php echo $diseaseid; ?>" id="D_verifier<?php echo $diseaseid; ?>" required>
-                                <?php
-                                  include("connections.php");
+														?>
+																	<option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
+														<?php
+																}
+															}
+														?>
+														</select>
+													</td>
+													<td>
+														<select class="form-control" name="D_verifier<?php echo $diseaseid; ?>" id="D_verifier<?php echo $diseaseid; ?>" required>
+														<?php
+															include("connections.php");
 
-                                  $fetch_staff = mysqli_query($connections, "
-																		SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
-																		FROM tblemployee
-																		WHERE stfEmployeeStatus = 'Active'
-                                  ");
+															$fetch_staff = mysqli_query($connections, "
+																SELECT CONCAT(strEmployeeFirstName,' ',strEmployeeMiddleName,' ',strEmployeeLastName) AS 'Fullname'
+																FROM tblemployee
+																WHERE stfEmployeeStatus = 'Active'
+															");
 
-                                  if(mysqli_num_rows($fetch_staff) > 0 )	{
-                                    while($row = mysqli_fetch_assoc($fetch_staff))	{
-                                      $fullname = $row["Fullname"];
-                                ?>
-                                      <option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
-                                      <?php
-                                    }
-                                  }
-                                  ?>
-                                </select>
-                              </td>
-                              <!--<td>
-                                <label class="radio-inline"><input type="radio" name="optradiosero<?php echo $diseaseid; ?>" id="optradiosero<?php echo $diseaseid; ?>" value="Passed" required>Negative</label>
-                                <label class="radio-inline"><input type="radio" name="optradiosero<?php echo $diseaseid; ?>" id="optradiosero<?php echo $diseaseid; ?>" value="Failed" required>Positive</label>
-                              </td>-->
-                              <td>
-                                <button type = "button" class ="btn btn-danger" disabled style="display:none;" id = "remarkspositive<?php echo $diseaseid; ?>" >POSITIVE</button>
-                                <button type = "button" class ="btn btn-success" disabled style="display:none;" id = "remarksnegative<?php echo $diseaseid; ?>" >NEGATIVE</button>
-                              </td>
-                            </tr>
+															if(mysqli_num_rows($fetch_staff) > 0 )	{
+																while($row = mysqli_fetch_assoc($fetch_staff))	{
+																	$fullname = $row["Fullname"];
+														?>
+																	<option value="<?php echo $fullname ?>"><?php echo $fullname ?></option>
+																	<?php
+																}
+															}
+															?>
+														</select>
+													</td>
+													<td>
+														<button type = "button" class ="btn btn-danger" disabled style="display:none;" id = "remarkspositive<?php echo $diseaseid; ?>" >POSITIVE</button>
+														<button type = "button" class ="btn btn-success" disabled style="display:none;" id = "remarksnegative<?php echo $diseaseid; ?>" >NEGATIVE</button>
+													</td>
+												</tr>
                         <?php
 														}
 													}
@@ -522,7 +492,6 @@
       </div>
     </div>
   </div>
-
   <div class="modal fade" id="chooseStorageModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -580,12 +549,10 @@
       </div>
     </div>
   </div>
-  <?php 
-  include "components/core-script.php";
-  ?>
-  <script src="../public/js/datatables.min.js"></script>
-  <script src="../public/js/notification.js"></script>
-  <script src="../public/js/jquery-ui.js"></script>
+  <?php include "components/core-script.php"; ?>
+  <script src="../../public/js/datatables.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
+  <script src="../../public/js/jquery-ui.js"></script>
   <script>
     $('#transaction').addClass('active');
     $('#donor-records').addClass('active');
@@ -1039,5 +1006,5 @@
     }
   });
   </script>
-</body>
+	</body>
 </html>

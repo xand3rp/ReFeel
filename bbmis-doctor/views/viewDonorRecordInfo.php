@@ -171,16 +171,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="icon" href="../../public/assets/blood.ico">
+		<link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../public/css/main.css">
+		<link rel="stylesheet" href="../../public/css/all.css">
+		<link rel="stylesheet" href="../../public/css/datatables.min.css">
+		<link rel="stylesheet" href="../../public/css/bs-override.css">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>ReFeel - Donor Info</title>
-		<link rel="icon" href="../public/img/blood.ico">
-		<link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" href="../public/css/main.css">
-		<link rel="stylesheet" href="../public/css/all.css">
-		<link rel="stylesheet" href="../public/css/datatables.min.css">
-		<link rel="stylesheet" href="../public/css/bs-override.css">
 	</head>
 	<body>
 		<?php include "components/loader.php"; ?>
@@ -209,7 +209,7 @@
 									<div class="mx-2">
 										<div class="row py-2">
 											<div class="col-6 text-center client-info-card">
-												<img src = "../public/img/<?php echo $image ?>" style = "width: 200px; height: 200px; border-radius:  100px;">
+												<img src = "../../public/img/<?php echo $image ?>" style = "width: 200px; height: 200px; border-radius:  100px;">
 												<h4 class="pt-3">
 													<?php
 														// echo $clientfirstname . " " . $clientmiddlename . " " . $clientlastname;
@@ -314,8 +314,8 @@
 			</main>
 		</div>
 		<?php include "components/core-script.php";	?>
-		<script src="../public/js/datatables.min.js"></script>
-		<script src="../public/js/notification.js"></script>
+		<script src="../../public/js/datatables.min.js"></script>
+		<script src="../../public/js/notification.js"></script>
 		<script>
 			// feather.replace();
 			$('#maintenance').addClass('active');

@@ -1,17 +1,15 @@
-<?php 
-include "../controller/fetchEmpAcc.php";
-?>
+<?php include "../controller/fetchEmpAcc.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Discarded Blood Bags</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../public/img/blood.ico">
   <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="../public/css/main.css">
   <link rel="stylesheet" href="../public/css/all.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReFeel - Discarded Blood Bags</title>
   <style>
   .bb-col {
     border: 1px solid rgb(20,20,20);
@@ -20,17 +18,11 @@ include "../controller/fetchEmpAcc.php";
   </style>
 </head>
 <body>
-  <?php 
-  include "components/loader.php";
-  ?>
+  <?php include "components/loader.php"; ?>
   <div class="wrapper">
-    <?php 
-    include "components/sidebar.php";
-    ?>
+    <?php include "components/sidebar.php"; ?>
     <main class="mainpanel">
-      <?php 
-      include "components/header.php";
-      ?>
+      <?php include "components/header.php"; ?>
       <div class="page-title">
         <!-- <div class="row"> -->
       <h3>Discarded Blood Bags</h3>
@@ -90,10 +82,8 @@ include "../controller/fetchEmpAcc.php";
       </div>
     </div>
   </div>
-  <?php 
-  include "components/core-script.php";
-  ?>
-  <script src="../public/js/notification.js"></script>
+  <?php include "components/core-script.php"; ?>
+  <script src="../../public/js/notification.js"></script>
   <script>
   $('#transaction').addClass('active');
   $('#blood-inventory').addClass('active');
@@ -144,5 +134,5 @@ include "../controller/fetchEmpAcc.php";
     });
   });
   </script>
-</body>
+	</body>
 </html>

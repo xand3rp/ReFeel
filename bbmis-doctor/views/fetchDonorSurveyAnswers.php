@@ -1,17 +1,16 @@
-<?php 
-include "../controller/fetchEmpAcc.php";
-?>
+<?php include "../controller/fetchEmpAcc.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Donor Survey Answers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
+  <title>ReFeel - Donor Survey Answers</title>
 </head>
 <body>
   <?php include "components/loader.php"; ?>
@@ -155,26 +154,24 @@ include "../controller/fetchEmpAcc.php";
     </main>
   </div>
   <?php include "components/core-script.php"; ?>
-	<script src="../public/js/sweetalert.min.js" type="text/javascript"></script>
-  <script src="../public/js/notification.js"></script>
+	<script src="../../public/js/sweetalert.min.js" type="text/javascript"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
-	
-	
   $('#home').addClass('active');
   $('#donor-list').addClass('active');
   $('.loader').hide();
 
   checkExpiringBloodBags();
 
-    function checkExpiringBloodBags() {
-      $.ajax({
-        type: "POST",
-        url: "../controller/blood/checkExpiringBloodBags.php",
-        complete: function(){
-          setTimeout(checkExpiringBloodBags, 60000);
-        }
-      });
-    }
+	function checkExpiringBloodBags() {
+		$.ajax({
+			type: "POST",
+			url: "../controller/blood/checkExpiringBloodBags.php",
+			complete: function(){
+				setTimeout(checkExpiringBloodBags, 60000);
+			}
+		});
+	}
 
   $(function()	{
     $("form[name ='submit_update']").on('submit',function(e)	{
@@ -237,5 +234,5 @@ include "../controller/fetchEmpAcc.php";
     });
   });
   </script>
-</body>
+	</body>
 </html>

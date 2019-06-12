@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/datatables.min.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Blood Component</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
-  <link rel="stylesheet" href="../public/css/datatables.min.css">
-  <link rel="stylesheet" href="../public/css/bs-override.css">
+  <title>ReFeel - Blood Component</title>
 </head>
 <body>
   <?php include "components/loader.php"; ?>
@@ -246,6 +246,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- enable blood component -->
 	<div class="modal fade" id="viewBloodComponentModal_enable" tabindex="-1" role="dialog" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -304,9 +305,9 @@
 		</div>
 	</div>
   <?php include "components/core-script.php"; ?>
-  <script src="../public/js/datatables.min.js"></script>
-  <script src="../public/js/sweetalert.min.js"></script>
-  <script src="../public/js/notification.js"></script>
+  <script src="../../public/js/datatables.min.js"></script>
+  <script src="../../public/js/sweetalert.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('#maintenance').addClass('active');
     $('#blood-component').addClass('active');

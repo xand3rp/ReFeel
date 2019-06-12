@@ -122,9 +122,7 @@
       </section>
     </main>
   </div>
-  <?php 
-  include "components/core-script.php";
-  ?>
+  <?php include "components/core-script.php"; ?>
   <script src="../../public/js/notification.js"></script>
   <script src="../../public/js/Chart.bundle.js"></script>
   <script>

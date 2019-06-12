@@ -1,24 +1,42 @@
 <?php 
-include "../controller/fetchEmpAcc.php";
-if($_GET["storage_id"]){
-  $storage_id = $_GET["storage_id"];
+	include "../controller/fetchEmpAcc.php";
+	if($_GET["storage_id"]){
+		$storage_id = $_GET["storage_id"];
 
-  $fetch_storagedetails = mysqli_query($connections, " SELECT * FROM tblstorage ts JOIN tblstoragetype tst ON ts.intStorageTypeId = tst.intStorageTypeId WHERE intStorageId = $storage_id");
-  while($row = mysqli_fetch_assoc($fetch_storagedetails)){
-    $storage_name = $row["strStorageName"];
-    $storage_type = $row["strStorageType"];
-  }
-  $countallbloodbags = mysqli_query($connections, " SELECT COUNT(strBloodBagSerialNo) as totalnum FROM tblbloodbag WHERE  DATEDIFF(NOW(), dtmDateStored) <= 35 AND intStorageId = $storage_id AND stfIsBloodBagExpired = 'No' AND intBloodTypeId <> 1 "); //count all blood bags
-  $countstoragecapacity = mysqli_query($connections, " SELECT intStorageCapacity FROM tblstorage WHERE intStorageId = $storage_id "); // get the capacity of the storage
-  $rowcountbb = mysqli_fetch_assoc($countallbloodbags);
-  $rowcountcap = mysqli_fetch_assoc($countstoragecapacity);
-  $totalbloodbags = $rowcountbb['totalnum'];
-  $storagecap = $rowcountcap['intStorageCapacity'];
-  settype($totalbloodbags, "int");
-  settype($storagecap, "int");
-  $criticallevel = $storagecap * .8;
-  settype($criticallevel, "int");
-}
+		$fetch_storagedetails = mysqli_query($connections, "
+			SELECT *
+			FROM tblstorage ts
+			JOIN tblstoragetype tst ON ts.intStorageTypeId = tst.intStorageTypeId
+			WHERE intStorageId = $storage_id
+		");
+		while($row = mysqli_fetch_assoc($fetch_storagedetails)){
+			$storage_name = $row["strStorageName"];
+			$storage_type = $row["strStorageType"];
+		}
+		//count all blood bags
+		$countallbloodbags = mysqli_query($connections, "
+			SELECT COUNT(strBloodBagSerialNo) as totalnum
+			FROM tblbloodbag
+			WHERE DATEDIFF(NOW(), dtmDateStored) <= 35
+			AND intStorageId = $storage_id
+			AND stfIsBloodBagExpired = 'No'
+			AND intBloodTypeId <> 1
+		");
+		// get the capacity of the storage
+		$countstoragecapacity = mysqli_query($connections, "
+			SELECT intStorageCapacity
+			FROM tblstorage
+			WHERE intStorageId = $storage_id
+		");
+		$rowcountbb = mysqli_fetch_assoc($countallbloodbags);
+		$rowcountcap = mysqli_fetch_assoc($countstoragecapacity);
+		$totalbloodbags = $rowcountbb['totalnum'];
+		$storagecap = $rowcountcap['intStorageCapacity'];
+		settype($totalbloodbags, "int");
+		settype($storagecap, "int");
+		$criticallevel = $storagecap * .8;
+		settype($criticallevel, "int");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,23 +45,18 @@ if($_GET["storage_id"]){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ReFeel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
+  <link rel="icon" href="../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
 </head>
 <body>
-  <?php 
-  include "components/loader.php";
-  ?>
+  <?php include "components/loader.php"; ?>
   <div class="wrapper">
-    <?php 
-    include "components/sidebar.php";
-    ?>
+    <?php include "components/sidebar.php"; ?>
     <main class="mainpanel">
-      <?php 
-      include "components/header.php";
-      ?>
+      <?php include "components/header.php"; ?>
       <div class="page-title">
         <h3><?php echo $storage_name ?></h3>
         <p><small style="color:rgb(150,150,150)">Capacity: <strong id='total'></strong>/<?php echo $storagecap ?>  <strong id='warningmessage' style="color:red"></strong></small></p>
@@ -321,11 +334,9 @@ if($_GET["storage_id"]){
       </div>
     </div>
   </div>
-  <?php 
-  include "components/core-script.php";
-  ?>
-  <script src="../public/js/sweetalert.min.js"></script>
-  <script src="../public/js/notification.js"></script>
+  <?php include "components/core-script.php"; ?>
+  <script src="../../public/js/sweetalert.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('#transaction').addClass('active');
     $('#blood-inventory').addClass('active');

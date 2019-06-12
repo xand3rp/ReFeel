@@ -1,30 +1,25 @@
-<?php 
-include "../controller/fetchEmpAcc.php";
-?>
+<?php include "../controller/fetchEmpAcc.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Reports</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
+  <title>ReFeel - Reports</title>
 </head>
 <body>
-  <?php 
-  include "components/loader.php";
-  ?>
+  <?php include "components/loader.php"; ?>
   <div class="wrapper">
-    <?php 
-    include "components/sidebar.php";
-    ?>
+    <?php include "components/sidebar.php"; ?>
     <main class="mainpanel">
       <?php 
-      include "components/header.php";
-      $datenow = date('Y-m-d');
+				include "components/header.php";
+				$datenow = date('Y-m-d');
       ?>
       <div class="page-title">
         <h3>Reports</h3>
@@ -56,10 +51,10 @@ include "../controller/fetchEmpAcc.php";
       </section>
     </main>
   </div>
-  <script src="../public/rep/jquery-3.3.1.min.js"></script>
-  <script src="../public/rep/popper.min.js"></script>
-  <script src="../public/rep/bootstrap.min.js"></script>
-  <script src="../public/js/notification.js"></script>
+  <script src="../../public/rep/jquery-3.3.1.min.js"></script>
+  <script src="../../public/rep/popper.min.js"></script>
+  <script src="../../public/rep/bootstrap.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('#reports').addClass('active');
     $('.loader').hide();

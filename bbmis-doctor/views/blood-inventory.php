@@ -1,79 +1,79 @@
-<?php 
-include "../controller/fetchEmpAcc.php";
-?>
+<?php include "../controller/fetchEmpAcc.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ReFeel - Blood Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
+  <title>ReFeel - Blood Inventory</title>
 </head>
 <body>
-  <?php 
-  include "components/loader.php";
-  ?>
+  <?php include "components/loader.php"; ?>
   <div class="wrapper">
-    <?php 
-    include "components/sidebar.php";
-    ?>
+    <?php include "components/sidebar.php"; ?>
     <main class="mainpanel">
-      <?php 
-      include "components/header.php";
-      ?>
+      <?php include "components/header.php"; ?>
       <div class="page-title">
-        <h3>Blood Inventory</h3>
+        <h3 class="p-2">Blood Inventory</h3>
       </div>
       <section class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 col-lg-12 p-0">
               <div class="content-container" style="padding-bottom: 3rem">
-                <h4>Storage</h4>
+                <h4 class="py-2">Storage</h4>
                 <div class="button-container">
                   <?php
-                    $fetch_allstorage = mysqli_query($connections, " SELECT * FROM tblstorage ts JOIN tblstoragetype tst ON ts.intStorageTypeId = tst.intStorageTypeId ");
-                    $output =
-                    "
-                    <div class='row'>
+                    $fetch_allstorage = mysqli_query($connections, "
+											SELECT *
+											FROM tblstorage ts
+											JOIN tblstoragetype tst ON ts.intStorageTypeId = tst.intStorageTypeId
+										");
+                    $output = "
+											<div class='row'>
                     ";
-                    if (mysqli_num_rows($fetch_allstorage) > 0) {
+                    if(mysqli_num_rows($fetch_allstorage) > 0) {
                       while($row = mysqli_fetch_assoc($fetch_allstorage)){
                         $storage_id = $row["intStorageId"];
                         $storage_name = $row["strStorageName"];
                         $storage_type = $row["strStorageType"];
-                        $output .=
-                        "
-                        <div class='col-md-4'>
-                        <button type='button' onclick='window.location.href=\"selectedStorage.php?storage_id=$storage_id\"' class='btn btn-lg btn-block storage-buttons mt-2' id=$storage_id><i class='fas fa-box-open'></i> $storage_name<br><small>$storage_type</small></button>
-                        </div>
+                        $output .= "
+													<div class='col-md-4'>
+														<button type='button' onclick='window.location.href=\"selectedStorage.php?storage_id=$storage_id\"' class='btn btn-lg btn-block storage-buttons mt-2' id=$storage_id>
+															<i class='fas fa-box-open'></i>
+															$storage_name
+															<br />
+															<small>$storage_type</small>
+														</button>
+													</div>
                         ";
                       }
                       $output .= "</div>";
+											
                       echo $output;
                     }
                     else {
-                      echo "No active storage";
+                      echo "No active storage.";
                     }
                   ?>
                 </div>
-                <button type="button" class="btn btn-outline-danger float-right" id="btn_addbloodbag" data-toggle="modal" data-target="#modal_addbloodbag"><i class="fas fa-plus"></i> Add Blood Bag</button>
+                <button type="button" class="btn btn-outline-danger float-right mt-n1" id="btn_addbloodbag" data-toggle="modal" data-target="#modal_addbloodbag">
+									<i class="fas fa-plus"></i>
+									Add Blood Bag
+								</button>
               </div>
               <div class="content-container mt-2">
-                <h4>Released Blood Bags</h4>
-                <div class="container-fluid" id="releasedBloodBags">
-
-                </div>
+                <h4 class="py-2">Released Blood Bags</h4>
+                <div class="container-fluid" id="releasedBloodBags"></div>
               </div>
               <div class="content-container mt-2">
-                <h4>Rotten Blood Bag</h4>
-                <div class="container-fluid" id="rottenBloodBags">
-
-                </div>
+                <h4 class="py-2">Rotten Blood Bags</h4>
+                <div class="container-fluid" id="rottenBloodBags"></div>
               </div>
             </div>
           </div>
@@ -82,8 +82,8 @@ include "../controller/fetchEmpAcc.php";
     </main>
   </div>
   <!-- modal declaration -->
-<!-- add blood bag modal -->
-<div class="modal fade" id="modal_addbloodbag" role="dialog" tabindex="-1" aria-hidden="true">
+	<!-- add blood bag modal -->
+	<div class="modal fade" id="modal_addbloodbag" role="dialog" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -108,60 +108,65 @@ include "../controller/fetchEmpAcc.php";
               <label for="chosenStorage">Choose a Storage</label>
               <select class="form-control" name="chosenStorage" id="chosenStorage" required>
               <?php
+								$fetch_storage = mysqli_query($connections, "
+									SELECT intStorageId, intStorageCapacity, strStorageName
+									FROM tblstorage
+									WHERE intStorageTypeId = 1
+									AND stfStorageStatus = 'Active'
+								");
+								
+								if(mysqli_num_rows($fetch_storage) > 0 ){
+									while($row = mysqli_fetch_assoc($fetch_storage)){
+										$storageid = $row["intStorageId"];
+										$storagename = $row["strStorageName"];
+										$storagecapacity = $row["intStorageCapacity"];
 
-              $fetch_storage = mysqli_query($connections, " SELECT intStorageId,intStorageCapacity,strStorageName FROM tblstorage WHERE intStorageTypeId = 1 AND stfStorageStatus = 'Active'");
-
-              if(mysqli_num_rows($fetch_storage) > 0 ){
-                while($row = mysqli_fetch_assoc($fetch_storage)){
-                  $storageid = $row["intStorageId"];
-                  $storagename = $row["strStorageName"];
-                  $storagecapacity = $row["intStorageCapacity"];
-
-                  $check_ifmayspacepa = mysqli_query($connections,"SELECT COUNT(intBloodBagId) AS bloodcount FROM tblbloodbag bb JOIN tblstorage s ON bb.intStorageId = s.intStorageId WHERE intBloodDispatchmentId = '1' AND stfIsBloodBagExpired = 'No' AND intStorageTypeId = 2 AND s.intStorageId = $storageid");
-
-                  while ($row2 = mysqli_fetch_assoc($check_ifmayspacepa)) {
-                    $quantity = $row2["bloodcount"];
-                  }
-
-                  if($quantity < $storagecapacity){
-                  ?>
+										$check_ifmayspacepa = mysqli_query($connections, "
+											SELECT COUNT(intBloodBagId) AS bloodcount
+											FROM tblbloodbag bb
+											JOIN tblstorage s ON bb.intStorageId = s.intStorageId
+											WHERE intBloodDispatchmentId = '1'
+											AND stfIsBloodBagExpired = 'No'
+											AND intStorageTypeId = 2
+											AND s.intStorageId = $storageid
+										");
+										while ($row2 = mysqli_fetch_assoc($check_ifmayspacepa)) {
+											$quantity = $row2["bloodcount"];
+										}
+										if($quantity < $storagecapacity){
+              ?>
                   <option value="<?php echo $storageid ?>"><?php echo $storagename ?></option>
-                  <?php
-                }
-
-                }
-              }
+							<?php
+										}
+									}
+								}
               ?>
             </select>
             </div>
-
             <div class="form-group">
               <label for="chosenPreservative">Choose a Preservative</label>
               <select class="form-control" name="chosenPreservative" id="chosenPreservative" required>
               <?php
-
-              $fetch_preservative = mysqli_query($connections, " SELECT intPreservativeId, txtPreservative, intPreservativeLifespan FROM tblpreservatives WHERE stfPreservativeStatus = 'Active'");
-
-              if(mysqli_num_rows($fetch_preservative) > 0 ){
-                while($pres = mysqli_fetch_assoc($fetch_preservative)){
-                  $preservativeid = $pres["intPreservativeId"];
-                  $preservative = $pres["txtPreservative"];
-                  $preservativelifespan = $pres["intPreservativeLifespan"];
-
-                  ?>
-
-                  <option value="<?php echo $preservativeid ?>"><?php echo $preservative.' = '.$preservativelifespan.' days' ?></option>
-
-                  <?php
-                }
-              }
+								$fetch_preservative = mysqli_query($connections, "
+									SELECT intPreservativeId, txtPreservative, intPreservativeLifespan
+									FROM tblpreservatives
+									WHERE stfPreservativeStatus = 'Active'
+								");
+								if(mysqli_num_rows($fetch_preservative) > 0 ){
+									while($pres = mysqli_fetch_assoc($fetch_preservative)){
+										$preservativeid = $pres["intPreservativeId"];
+										$preservative = $pres["txtPreservative"];
+										$preservativelifespan = $pres["intPreservativeLifespan"];
+              ?>
+              <option value="<?php echo $preservativeid ?>"><?php echo $preservative.' = '.$preservativelifespan.' days' ?></option>
+              <?php
+									}
+								}
               ?>
             </select>
             </div>
-
             <div class="form-group">
               <label for="bloodtype">Blood Type :</label>
-
               <label id='bloodtype'>
               </div>
               <div class="form-group">
@@ -170,7 +175,7 @@ include "../controller/fetchEmpAcc.php";
                 <div class="result"></div>
               </div>
             </div>
-          </div>
+					</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <input type="submit" class="btn btn-primary" name="savebloodbag">
@@ -179,11 +184,9 @@ include "../controller/fetchEmpAcc.php";
       </div>
     </div>
   </div>
-  <?php 
-  include "components/core-script.php";
-  ?>
-  <script src="../public/js/sweetalert.min.js"></script>
-  <script src="../public/js/notification.js"></script>
+  <?php include "components/core-script.php"; ?>
+  <script src="../../public/js/sweetalert.min.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('#transaction').addClass('active');
     $('#blood-inventory').addClass('active');

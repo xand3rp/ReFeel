@@ -49,9 +49,9 @@
 
 		// $sub_array[] = '<div class="update" data-id="'.$row["intBloodComponentId"].'" 	data-column="intBloodComponentId">' . $row["intBloodComponentId"] . '</div>';
 
-		$sub_array[] = '<div class="update pt-1" data-id="'.$row["intBloodTypeId"].'" 	data-column="stfBloodType">' . $row["stfBloodType"] . '</div>';
+		$sub_array[] = '<div class="update pt-1" data-id="'.$row["intBloodTypeId"].'" data-column="stfBloodType">' . $row["stfBloodType"] . '</div>';
 
-		$sub_array[] = '<div class="update pt-1" data-id="'.$row["intBloodTypeId"].'" 	data-column="stfBloodTypeRhesus">' . $row["stfBloodTypeRhesus"] . '</div>';
+		$sub_array[] = '<div class="update pt-1" data-id="'.$row["intBloodTypeId"].'" data-column="stfBloodTypeRhesus">' . $row["stfBloodTypeRhesus"] . '</div>';
 
 		$sub_array[] =	'
 			<button type="button" name="edit" class="btn btn-outline-success btn-sm mr-1" id="'.$row["intBloodTypeId"].'" data-toggle="modal" data-target="#editBloodTypeModal" data-id="'.$row["intBloodTypeId"].'">

@@ -7,25 +7,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="../../public/assets/blood.ico">
+  <link rel="stylesheet" href="../../public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../public/css/main.css">
+  <link rel="stylesheet" href="../../public/css/all.css">
+  <link rel="stylesheet" href="../../public/css/bs-override.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ReFeel - Survey Answers</title>
-	<link rel="icon" href="../public/img/blood.ico">
-  <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../public/css/main.css">
-  <link rel="stylesheet" href="../public/css/all.css">
-  <link rel="stylesheet" href="../public/css/bs-override.css">
 </head>
 <body>
-  <?php
-  include "components/loader.php";
-  ?>
+  <?php include "components/loader.php"; ?>
   <div class="wrapper">
     <main class="mainpanel" style="width: 100%">
-      <?php
-      include "components/special-header.php";
-      ?>
+      <?php include "components/special-header.php"; ?>
       <div class="page-title">
         <div class="d-flex justify-content-between">
 						<div>
@@ -273,7 +269,7 @@
     </main>
   </div>
   <?php include "components/core-script.php"; ?>
-  <script src="../public/js/notification.js"></script>
+  <script src="../../public/js/notification.js"></script>
   <script>
     $('.loader').hide();
 

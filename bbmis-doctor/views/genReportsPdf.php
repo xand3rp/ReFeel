@@ -100,7 +100,8 @@
 	$pdf -> Cell(3.75, 0.3, 'Blood Type', 1, 0, 'C');
 	$pdf -> Cell(3.75, 0.3, 'Count', 'TRB', 1, 'C');
 
-	$reports_wastage = mysqli_query($connections, " SELECT stfBloodType, COUNT(intBloodBagId) AS 'count_wastage'
+	$reports_wastage = mysqli_query($connections, "
+		SELECT stfBloodType, COUNT(intBloodBagId) AS 'count_wastage'
 		FROM tblbloodtype bt
 		JOIN tblbloodbag bb ON bt.intBloodTypeId = bb.intBloodTypeId
 		WHERE stfIsBloodBagExpired = 'Yes'
@@ -475,6 +476,3 @@
 
 	$pdf -> Output();
 ?>
-<script>
-
-</script>
